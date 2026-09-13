@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import date, time
 
 class ProductCreate(BaseModel):
@@ -18,8 +18,8 @@ class ProductResponse(BaseModel):
         from_attributes=True
 
 class SaleCreate(BaseModel):
-    date: date
-    time: time
+   # date: date
+    # time: time no se pide porque sino lo tengo q poner a mano
     quantity: int
     product_id: int
 
@@ -28,14 +28,14 @@ class SaleCreate(BaseModel):
 
 class SaleResponse(BaseModel):
     id: int
-    date: date
-    time: time
+    date: date 
+    time: time 
     quantity: int
     product: ProductResponse
     total_price: float
 
     class Config:
-        from_attribute = True
+        from_attributes = True
 
 
 #Preguntar si se puede hacer un schema para cambiar solamente el precio en vez de todo el producto
